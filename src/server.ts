@@ -21,15 +21,15 @@ server.set('views', path.join(__dirname, 'views'));
 server.engine('mustache', mustacheExpress());''
 
 // Middleware to serve static files
-server.use(express.static(path.join(__dirname, 'public')));
+server.use(express.static(path.join(__dirname, '../public')));
 server.use(express.urlencoded({ extended: true }));
 
 server.use(mainRouter);
 
 // Handle 404 errors
-
 server.use((req, res) => {
-    res.render("Pagina nao encontrada");
+    
+    res.status(404).render("pages/404"); 
 });
 
 // Start the server
